@@ -1,0 +1,62 @@
+<header class="fixed w-full z-50 transition-all duration-300" id="navbar">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="font-playfair text-xl md:text-2xl font-bold text-primary">
+      Batik Karya Nusantara
+    </a>
+    
+    <nav class="hidden md:block">
+      <ul class="flex space-x-8">
+        <li><a href="#beranda" class="text-primary hover:text-secondary transition-colors">Beranda</a></li>
+        <li><a href="#tentang" class="text-primary hover:text-secondary transition-colors">Tentang Kami</a></li>
+        <li><a href="#produk" class="text-primary hover:text-secondary transition-colors">Produk</a></li>
+        <li><a href="#testimonial" class="text-primary hover:text-secondary transition-colors">Testimonial</a></li>
+        <li><a href="#kontak" class="text-primary hover:text-secondary transition-colors">Kontak</a></li>
+      </ul>
+    </nav>
+    
+    <button class="md:hidden text-primary focus:outline-none" id="menu-toggle" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-light absolute w-full shadow-md" id="mobile-menu">
+    <ul class="px-4 py-4 space-y-4">
+      <li><a href="#beranda" class="block text-primary hover:text-secondary">Beranda</a></li>
+      <li><a href="#tentang" class="block text-primary hover:text-secondary">Tentang Kami</a></li>
+      <li><a href="#produk" class="block text-primary hover:text-secondary">Produk</a></li>
+      <li><a href="#testimonial" class="block text-primary hover:text-secondary">Testimonial</a></li>
+      <li><a href="#kontak" class="block text-primary hover:text-secondary">Kontak</a></li>
+    </ul>
+  </div>
+</header>
+
+<script is:inline>
+  // Handle navbar background change on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-light', 'shadow-md');
+    } else {
+      navbar.classList.remove('bg-light', 'shadow-md');
+    }
+  });
+  
+  // Handle mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  
+  // Close mobile menu when clicking menu items
+  const mobileMenuItems = document.querySelectorAll('#mobile-menu a');
+  mobileMenuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>

@@ -1,0 +1,70 @@
+---
+const faqs = [
+  {
+    question: "Berapa lama waktu pengiriman batik?",
+    answer: "Waktu pengiriman bervariasi tergantung lokasi Anda. Untuk daerah Jawa, biasanya membutuhkan waktu 2-3 hari. Untuk luar Jawa 3-5 hari, dan untuk luar negeri 7-14 hari kerja."
+  },
+  {
+    question: "Apakah produk batik bisa dicuci dengan mesin?",
+    answer: "Untuk menjaga kualitas dan warna batik, kami menyarankan untuk mencuci dengan tangan menggunakan air dingin dan sabun lembut. Hindari penggunaan pemutih dan jangan merendam terlalu lama."
+  },
+  {
+    question: "Apakah ada garansi untuk produk batik yang dibeli?",
+    answer: "Ya, kami memberikan garansi 7 hari untuk pengembalian produk jika terdapat cacat produksi. Namun, kami tidak menerima pengembalian untuk alasan ketidakcocokan motif atau warna karena sudah ditampilkan dengan jelas di galeri produk."
+  },
+  {
+    question: "Apakah Batik Karya Nusantara menerima pesanan custom?",
+    answer: "Ya, kami menerima pesanan custom untuk acara pernikahan, seragam perusahaan, atau kebutuhan khusus lainnya. Silakan hubungi kami melalui WhatsApp atau email untuk diskusi lebih lanjut mengenai desain dan jumlah minimum pesanan."
+  },
+  {
+    question: "Bagaimana cara merawat batik agar tahan lama?",
+    answer: "Cuci dengan tangan menggunakan air dingin dan sabun lembut, jangan gunakan pemutih, keringkan di tempat teduh, setrika dengan suhu rendah sampai sedang, dan simpan dengan cara digantung atau dilipat dengan rapi di tempat yang kering."
+  },
+  {
+    question: "Metode pembayaran apa saja yang tersedia?",
+    answer: "Kami menerima pembayaran melalui transfer bank (BCA, Mandiri, BNI, BRI), e-wallet (GoPay, OVO, Dana, LinkAja), dan kartu kredit/debit via payment gateway."
+  }
+];
+---
+
+<section class="py-20 bg-light">
+  <div class="container mx-auto px-4">
+    <!-- Section Title -->
+    <div class="text-center mb-12">
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-primary mb-2">Pertanyaan yang Sering Diajukan</h2>
+      <p class="text-secondary max-w-2xl mx-auto">Temukan jawaban untuk pertanyaan yang sering diajukan tentang produk dan layanan kami</p>
+      <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
+    </div>
+    
+    <!-- FAQ Accordion -->
+    <div class="max-w-3xl mx-auto">
+      {faqs.map((faq, index) => (
+        <div class="faq-item mb-4 border border-gray-200 rounded-lg overflow-hidden">
+          <button 
+            class="faq-header w-full bg-background p-4 text-left font-medium text-primary flex justify-between items-center"
+            aria-expanded="false"
+          >
+            <span>{faq.question}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-5 w-5 transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq-content hidden bg-white p-4 text-secondary">
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Additional Question -->
+    <div class="text-center mt-12">
+      <p class="text-secondary mb-4">Punya pertanyaan lain yang belum terjawab?</p>
+      <a 
+        href="#kontak" 
+        class="inline-block bg-primary hover:bg-opacity-90 text-light font-medium px-6 py-3 rounded-md transition-colors duration-300"
+      >
+        Hubungi Kami
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Batik Karya Nusantara - Warisan Budaya Indonesia", 
+  description = "Batik Karya Nusantara menawarkan koleksi batik tulis berkualitas tinggi dengan corak tradisional dari berbagai daerah di Indonesia."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  </head>
+  <body class="bg-background font-poppins text-secondary">
+    <slot />
+    
+    <!-- Initialize Swiper -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize testimonial swiper
+        const testimonialSwiper = new Swiper('.testimonial-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          },
+        });
+        
+        // Initialize FAQ accordions
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+          const header = item.querySelector('.faq-header');
+          const content = item.querySelector('.faq-content');
+          
+          header.addEventListener('click', () => {
+            const expanded = header.getAttribute('aria-expanded') === 'true';
+            header.setAttribute('aria-expanded', !expanded);
+            content.classList.toggle('hidden');
+            header.querySelector('.faq-icon').classList.toggle('rotate-180');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

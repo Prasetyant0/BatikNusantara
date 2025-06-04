@@ -1,0 +1,44 @@
+---
+import prosesBg from '../assets/prosesbg.webp';
+---
+
+<section id="beranda" class="relative h-screen flex items-center">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src={prosesBg}
+      alt="Model Batik Indonesia"
+      class="w-full h-full object-cover"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-primary bg-opacity-60"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-2xl text-light animate-fade-in">
+      <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+        Batik Karya Nusantara
+      </h1>
+      <h2 class="font-playfair text-2xl md:text-3xl italic mb-6">
+        Warisan Budaya Indonesia
+      </h2>
+      <p class="text-lg md:text-xl mb-8">
+        <span class="bg-primary bg-opacity-70 px-2 py-1"
+          >Diskon 20% untuk Pembelian Pertama!</span
+        >
+      </p>
+      <a
+        href="#produk"
+        class="inline-block bg-primary hover:bg-opacity-90 text-light font-medium px-8 py-3 rounded-md transition-colors duration-300 transform hover:scale-105">
+        Lihat Koleksi →
+      </a>
+    </div>
+  </div>
+
+  <!-- Decorative batik pattern (subtle) -->
+  <div
+    class="absolute bottom-0 left-0 w-full h-16 bg-repeat-x opacity-20"
+    style="background-image: url('https://i.ibb.co/BrQzmzQ/batik-pattern.png');">
+  </div>
+</section>
