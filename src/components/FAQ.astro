@@ -35,32 +35,37 @@ const faqs = [
       <p class="text-secondary max-w-2xl mx-auto">Temukan jawaban untuk pertanyaan yang sering diajukan tentang produk dan layanan kami</p>
       <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
     </div>
-    
+
     <!-- FAQ Accordion -->
     <div class="max-w-3xl mx-auto">
       {faqs.map((faq, index) => (
-        <div class="faq-item mb-4 border border-gray-200 rounded-lg overflow-hidden">
-          <button 
-            class="faq-header w-full bg-background p-4 text-left font-medium text-primary flex justify-between items-center"
+        <div class="faq-item mb-4 border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+          <button
+            class="faq-header w-full bg-background hover:bg-gray-50 p-4 text-left font-medium text-primary flex justify-between items-center transition-colors duration-200"
+            type="button"
             aria-expanded="false"
+            data-faq-index={index}
           >
-            <span>{faq.question}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-5 w-5 transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+            <span class="text-left pr-4">{faq.question}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </button>
-          <div class="faq-content hidden bg-white p-4 text-secondary">
-            <p>{faq.answer}</p>
+
+          <div class="faq-content" data-content-index={index} style="display: none;">
+            <div class="p-4 bg-white border-t border-gray-100">
+              <p class="text-secondary leading-relaxed">{faq.answer}</p>
+            </div>
           </div>
         </div>
       ))}
     </div>
-    
+
     <!-- Additional Question -->
     <div class="text-center mt-12">
       <p class="text-secondary mb-4">Punya pertanyaan lain yang belum terjawab?</p>
-      <a 
-        href="#kontak" 
+      <a
+        href="#kontak"
         class="inline-block bg-primary hover:bg-opacity-90 text-light font-medium px-6 py-3 rounded-md transition-colors duration-300"
       >
         Hubungi Kami
@@ -68,3 +73,142 @@ const faqs = [
     </div>
   </div>
 </section>
+
+<style is:global>
+  .faq-content {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .faq-content.active {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  .faq-icon {
+    transition: transform 0.3s ease-in-out !important;
+  }
+
+  .faq-header[aria-expanded="true"] .faq-icon {
+    transform: rotate(180deg) !important;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-header:focus {
+    outline: 2px solid #8B4513 !important;
+    outline-offset: 2px !important;
+  }
+</style>
+
+<script is:inline>
+  console.log('FAQ Script starting...');
+
+  function initFAQ() {
+    console.log('initFAQ called at:', new Date().toISOString());
+
+    setTimeout(() => {
+      const faqHeaders = document.querySelectorAll('.faq-header');
+      console.log('FAQ headers found:', faqHeaders.length);
+
+      if (faqHeaders.length === 0) {
+        console.error('❌ No FAQ headers found! Check your HTML structure.');
+        return;
+      }
+
+      faqHeaders.forEach((header, index) => {
+        console.log(`Setting up FAQ ${index}:`, header);
+        const newHeader = header.cloneNode(true);
+        header.parentNode.replaceChild(newHeader, header);
+
+        newHeader.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          console.log(`🔥 FAQ ${index} CLICKED!`);
+
+          const currentItem = this.closest('.faq-item');
+          const currentContent = currentItem.querySelector('.faq-content');
+          const currentIcon = this.querySelector('.faq-icon');
+          const isCurrentlyOpen = this.getAttribute('aria-expanded') === 'true';
+
+          console.log('Current content found:', !!currentContent);
+          console.log('Is currently open:', isCurrentlyOpen);
+
+          document.querySelectorAll('.faq-header').forEach((otherHeader) => {
+            if (otherHeader !== this) {
+              const otherItem = otherHeader.closest('.faq-item');
+              const otherContent = otherItem.querySelector('.faq-content');
+
+              otherHeader.setAttribute('aria-expanded', 'false');
+              if (otherContent) {
+                otherContent.classList.remove('active');
+                otherContent.style.display = 'none';
+              }
+            }
+          });
+
+          if (isCurrentlyOpen) {
+            console.log('🔽 Closing FAQ');
+            this.setAttribute('aria-expanded', 'false');
+            if (currentContent) {
+              currentContent.classList.remove('active');
+              setTimeout(() => {
+                currentContent.style.display = 'none';
+              }, 300);
+            }
+          } else {
+            console.log('🔼 Opening FAQ');
+            this.setAttribute('aria-expanded', 'true');
+            if (currentContent) {
+              currentContent.style.display = 'block';
+              currentContent.offsetHeight;
+              currentContent.classList.add('active');
+            }
+
+            setTimeout(() => {
+              this.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+              });
+            }, 350);
+          }
+        });
+
+        newHeader.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+
+        console.log(`✅ FAQ ${index} event listener added`);
+      });
+
+      console.log('🎉 All FAQ event listeners added successfully!');
+    }, 250);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFAQ);
+  } else {
+    initFAQ();
+  }
+
+  window.addEventListener('load', initFAQ);
+  setTimeout(initFAQ, 500);
+  setTimeout(initFAQ, 1000);
+</script>
