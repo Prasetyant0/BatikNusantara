@@ -1,34 +1,52 @@
+---
+import imageAboutUs from '../assets/images/prosesbg.webp';
+import batikPattern from '../assets/images/organicPattern.webp';
+---
+
 <section id="tentang" class="py-20 bg-light">
   <div class="container mx-auto px-4">
     <!-- Section Title -->
     <div class="text-center mb-12">
-      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-primary mb-2">Tentang Kami</h2>
+      <h2
+        class="font-playfair text-3xl md:text-4xl font-bold text-primary mb-2">
+        Tentang Kami
+      </h2>
       <div class="w-24 h-1 bg-primary mx-auto"></div>
     </div>
-    
+
     <div class="flex flex-col md:flex-row items-center">
       <!-- Image Section -->
       <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
         <div class="relative">
-          <img 
-            src="https://images.pexels.com/photos/5705090/pexels-photo-5705090.jpeg" 
-            alt="Pengrajin Batik" 
+          <img
+            src={imageAboutUs.src}
+            loading="eager"
+            alt="Pengrajin Batik"
             class="w-full h-auto rounded-lg shadow-lg"
           />
-          <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-background rounded-lg -z-10"></div>
+          <div
+            class="absolute -bottom-4 -right-4 w-24 h-24 bg-background rounded-lg -z-10">
+          </div>
         </div>
       </div>
-      
+
       <!-- Text Section -->
       <div class="md:w-1/2 animate-fade-in">
         <h3 class="font-playfair text-2xl text-secondary mb-4">Cerita Kami</h3>
         <p class="mb-4 text-secondary">
-          Sejak 2010, Batik Karya Nusantara telah memproduksi batik tulis berkualitas tinggi yang menampilkan keindahan warisan budaya Indonesia. Kami bekerja sama dengan pengrajin batik terbaik dari berbagai daerah di Indonesia untuk menciptakan karya batik yang autentik dan bernilai seni tinggi.
+          Sejak 2010, Batik Karya Nusantara telah memproduksi batik tulis
+          berkualitas tinggi yang menampilkan keindahan warisan budaya
+          Indonesia. Kami bekerja sama dengan pengrajin batik terbaik dari
+          berbagai daerah di Indonesia untuk menciptakan karya batik yang
+          autentik dan bernilai seni tinggi.
         </p>
         <p class="mb-6 text-secondary">
-          Setiap lembar batik yang kami hasilkan dibuat dengan penuh dedikasi dan kecintaan terhadap budaya Indonesia. Kami berkomitmen untuk melestarikan teknik tradisional pembuatan batik sambil menghadirkan motif-motif yang relevan dengan tren modern.
+          Setiap lembar batik yang kami hasilkan dibuat dengan penuh dedikasi
+          dan kecintaan terhadap budaya Indonesia. Kami berkomitmen untuk
+          melestarikan teknik tradisional pembuatan batik sambil menghadirkan
+          motif-motif yang relevan dengan tren modern.
         </p>
-        
+
         <!-- Batik Statistics -->
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
           <div class="text-center p-4 bg-background rounded-lg">
@@ -47,7 +65,10 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Decorative batik divider -->
-  <div class="w-full h-8 bg-repeat-x mt-16 opacity-20" style="background-image: url('https://i.ibb.co/BrQzmzQ/batik-pattern.png');"></div>
+  <div
+    class="w-full h-8 bg-repeat-x mt-16 opacity-20"
+    style={`background-image: url(${batikPattern.src});`}>
+  </div>
 </section>

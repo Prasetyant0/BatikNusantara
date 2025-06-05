@@ -1,10 +1,17 @@
 ---
+import batikParangRusak from '../assets/images/Baju/bajubatikparangrusak.webp';
+import batikMegaMendung from '../assets/images/Baju/bajubatikmegamendung.webp';
+import batikSekarJagad from '../assets/images/Baju/bajubatiksekarjagad.webp';
+import batikKawung from '../assets/images/Baju/bajubatikkawung.webp';
+import batikLasem from '../assets/images/Baju/bajubatiklasem.webp';
+import batikSogan from '../assets/images/Baju/bajubatiksogan.webp';
+
 const products = [
   {
     id: 1,
     name: "Batik Parang Rusak",
     price: "Rp 450.000",
-    image: "https://images.pexels.com/photos/5705102/pexels-photo-5705102.jpeg",
+    image: batikParangRusak.src,
     label: "Terlaris",
     description: "Batik tulis motif Parang Rusak dengan pewarna alami"
   },
@@ -12,7 +19,7 @@ const products = [
     id: 2,
     name: "Batik Mega Mendung",
     price: "Rp 350.000",
-    image: "https://images.pexels.com/photos/12015795/pexels-photo-12015795.jpeg",
+    image: batikMegaMendung.src,
     label: "Diskon 15%",
     description: "Batik cap motif Mega Mendung khas Cirebon"
   },
@@ -20,7 +27,7 @@ const products = [
     id: 3,
     name: "Batik Sekar Jagad",
     price: "Rp 550.000",
-    image: "https://images.pexels.com/photos/5705103/pexels-photo-5705103.jpeg",
+    image: batikSekarJagad.src,
     label: "",
     description: "Batik tulis motif Sekar Jagad dengan detail halus"
   },
@@ -28,7 +35,7 @@ const products = [
     id: 4,
     name: "Batik Kawung",
     price: "Rp 400.000",
-    image: "https://images.pexels.com/photos/6195084/pexels-photo-6195084.jpeg",
+    image: batikKawung.src,
     label: "Baru",
     description: "Batik cap motif Kawung klasik Yogyakarta"
   },
@@ -36,7 +43,7 @@ const products = [
     id: 5,
     name: "Batik Lasem",
     price: "Rp 650.000",
-    image: "https://images.pexels.com/photos/5705098/pexels-photo-5705098.jpeg",
+    image: batikLasem.src,
     label: "Edisi Terbatas",
     description: "Batik tulis Lasem dengan warna merah khas"
   },
@@ -44,7 +51,7 @@ const products = [
     id: 6,
     name: "Batik Sogan",
     price: "Rp 475.000",
-    image: "https://images.pexels.com/photos/6195092/pexels-photo-6195092.jpeg",
+    image: batikSogan.src,
     label: "",
     description: "Batik klasik dengan warna sogan khas Solo"
   }
@@ -62,34 +69,34 @@ const waBaseUrl = "https://wa.me/628123456789?text=";
       <p class="text-secondary max-w-2xl mx-auto">Temukan keindahan motif batik tradisional dengan sentuhan modern yang cocok untuk berbagai kesempatan</p>
       <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
     </div>
-    
+
     <!-- Products Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {products.map(product => (
         <div class="group bg-light rounded-lg overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl animate-fade-in">
           <!-- Product Image Container -->
           <div class="relative overflow-hidden h-64">
-            <img 
-              src={product.image} 
-              alt={product.name} 
+            <img
+              src={product.image}
+              alt={product.name}
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
-            
-            {/* Product Label (if exists) */}
+
+            <!-- Product Label (if exists) -->
             {product.label && (
               <div class="absolute top-4 right-4 bg-primary text-light px-3 py-1 rounded-full text-sm font-medium">
                 {product.label}
               </div>
             )}
           </div>
-          
+
           <!-- Product Info -->
           <div class="p-6">
             <h3 class="font-playfair text-xl font-semibold text-primary mb-2">{product.name}</h3>
             <p class="text-secondary mb-4 text-sm">{product.description}</p>
             <div class="flex justify-between items-center">
               <p class="font-bold text-primary">{product.price}</p>
-              <a 
+              <a
                 href={`${waBaseUrl}Halo, saya tertarik dengan ${product.name} seharga ${product.price}. Apakah masih tersedia?`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -102,10 +109,10 @@ const waBaseUrl = "https://wa.me/628123456789?text=";
         </div>
       ))}
     </div>
-    
+
     <!-- View More Button -->
     <div class="text-center mt-12">
-      <a 
+      <a
         href="#"
         class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-light font-medium px-8 py-3 rounded-md transition-colors duration-300"
       >

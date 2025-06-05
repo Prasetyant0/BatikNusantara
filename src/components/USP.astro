@@ -1,19 +1,23 @@
+---
+import upsImg from '../assets/images/cantingbackground.webp';
+---
 <section class="py-20 bg-primary text-light">
   <div class="container mx-auto px-4">
     <div class="flex flex-col md:flex-row items-center justify-between gap-12">
       <!-- Image Section -->
       <div class="md:w-1/2">
-        <img 
-          src="https://images.pexels.com/photos/5704720/pexels-photo-5704720.jpeg" 
-          alt="Proses Pembuatan Batik" 
+        <img
+          src={upsImg.src}
+          loading="eager"
+          alt="Proses Pembuatan Batik"
           class="w-full h-auto rounded-lg shadow-lg"
         />
       </div>
-      
+
       <!-- USP Section -->
       <div class="md:w-1/2 animate-slide-up">
         <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-6">Mengapa Memilih Kami?</h2>
-        
+
         <ul class="space-y-4">
           <li class="flex items-start">
             <div class="bg-light rounded-full p-1 mr-4 mt-1 text-primary">
@@ -26,7 +30,7 @@
               <p class="opacity-90">Dibuat oleh pengrajin lokal berpengalaman dengan teknik tradisional</p>
             </div>
           </li>
-          
+
           <li class="flex items-start">
             <div class="bg-light rounded-full p-1 mr-4 mt-1 text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -38,7 +42,7 @@
               <p class="opacity-90">Gratis ongkos kirim untuk pembelian di atas Rp 300.000</p>
             </div>
           </li>
-          
+
           <li class="flex items-start">
             <div class="bg-light rounded-full p-1 mr-4 mt-1 text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -50,7 +54,7 @@
               <p class="opacity-90">Menggunakan bahan kain berkualitas tinggi dan pewarna alami</p>
             </div>
           </li>
-          
+
           <li class="flex items-start">
             <div class="bg-light rounded-full p-1 mr-4 mt-1 text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -62,7 +66,7 @@
               <p class="opacity-90">Respons cepat dan pelayanan ramah selama 24 jam</p>
             </div>
           </li>
-          
+
           <li class="flex items-start">
             <div class="bg-light rounded-full p-1 mr-4 mt-1 text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
